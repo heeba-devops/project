@@ -1,4 +1,2 @@
 <<<<<<< HEAD
 file1.txt in master branch
-file1.txt on feature branch
->>>>>>> feature
