@@ -1,0 +1,79 @@
+FROM ubuntu:18.04
+RUN apt-get update
+RUN apt-get install openjdk-11-jdk wget
+
+RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.74/bin/apache-tomcat-9.0.74.tar.gz -o /tmp/tomcat.tar.gz
+RUN cd /tmp && tar -xvzf tomcat.tar.gz
+RUN mv /tmp/apache-tomcat-9.0.74  /opt/tomcat
+COPY sample.war /opt/tomcat/webapps
+EXPOSE 8080
+CMD /opt/tomcat/bin/catalina.sh run
+
+
+OR
+
+
+
+
+FROM tomcat:8-jre8   --- Ready-made Tomcat image from DockerHub
+MAINTAINER "Bhasker Reddy"
+COPY ./sample.war /usr/local/tomcat/webapps
+
+$ docker image ls
+$ docker image build -t custom_apache .   ---> Current working directory, Dockerfile
+$ docker image history custom_apache:latest  -- Image layers
+$ docker image inspect custom_apache:latest  -- Properties of an Image
+$ docker search nginx   --- Search image from hub.docker.com
+$ docker image pull nginx  --- Download latest image from hub.docker.com
+$ docker image pull nginx:1.7.9  -- Specific version of image
+$ docker image rm nginx  -- Removes an image(If no containers are running with this image)
+$ docker image prune -a  --- Remove all unused images
+$ docker image tag custom_apache  edurekadevops/custom:v1   --- Rename images
+$ docker login
+$ docker image push edurekadevops/custom:v1
+
+
+Dockerhub  --- Free plan vs Paid plan
+
+
+Free plan  --- Public repo/1 Private repo  --- Upgrade 
+
+
+
+
+
+$ docker container ls
+$ docker container run -d --name websvc -p 80:80 custom_apache
+$ docker container logs websvc
+$ docker container inspect websvc
+$ docker container exec -it websvc bash  -- login
+   Ctrl+p+q  -- Logout
+$ docker container stop websvc
+$ docker container start websvc
+$ docker container rm websvc(container is stopped before removing it)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
